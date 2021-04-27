@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+
+def handle_upload_to(instance, filename):
+    return '()/()'.format(instance.uid, filename)
+
+
+class File(models.Model):
+    uid = models.CharField(max_length=200)
+    model = models.FileField(upload_to=handle_upload_to)
