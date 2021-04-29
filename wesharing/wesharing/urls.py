@@ -19,7 +19,7 @@ from sharing import views
 
 urlpatterns = [
     path('upload/', views.upload),
-    path('download/', views.download),
+    path('<uuid:uid>/', views.download),
     path('', views.index),
     # path('admin/', admin.site.urls),
 ]
