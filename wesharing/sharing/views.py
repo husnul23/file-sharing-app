@@ -21,5 +21,5 @@ def upload(request):
 
     return render(request, 'sharing/index.html')
 
-def download(request):
+def download(request, uid):
     return render(request, 'sharing/download.html')
