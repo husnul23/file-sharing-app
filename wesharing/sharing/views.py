@@ -1,5 +1,5 @@
 import uuid
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 
 from .models import File
@@ -22,4 +22,6 @@ def upload(request):
     return render(request, 'sharing/index.html')
 
 def download(request, uid):
-    return render(request, 'sharing/download.html')
+    file = get_object_or_404(File, uid=uid)
+    #create variables for naming file, url file, and exclude file name(object) with split 
+    return render(request, 'sharing/download.html', {'di_url': file.file.url, 'filename': file.file.name.split('/')[-1]})
